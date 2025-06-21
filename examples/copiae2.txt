@@ -1,0 +1,204 @@
+Model etapa_2
+  VARIABLE caudal_molar
+    value: 14000;
+    lower: 0;
+    upper: 1E5;
+  END
+  VARIABLE fraccion
+    value: 0.09;
+    lower: 0;
+    upper: 1;
+ //   scale:1e-5;
+  END
+
+  K_1_N2He AS RealParameter (15.);
+  K_1_CO2  AS RealParameter (2.27);
+  K_1_H2S  AS RealParameter (0.84); 
+  K_1_C1   AS RealParameter (3.5);
+  K_1_C2   AS RealParameter (1.02);
+  K_1_C3   AS RealParameter (0.415);
+  K_1_iC4  AS RealParameter (0.215);
+  K_1_nC4  AS RealParameter (0.168);
+  K_1_iC5  AS RealParameter (0.093);
+  K_1_nC5  AS RealParameter (0.082);
+  K_1_C6   AS RealParameter (0.039);
+  K_1_C7   AS RealParameter (0.0193);
+  K_1_C8   AS RealParameter (0.0104);
+  K_1_C9   AS RealParameter (0.0059);
+  K_1_C10  AS RealParameter (0.0035);
+  K_1_C11  AS RealParameter (0.0001);
+
+  K_2_N2He AS RealParameter (35.);
+  K_2_CO2  AS RealParameter (6.6);
+  K_2_H2S  AS RealParameter (2.03);
+  K_2_C1   AS RealParameter (11.5);
+  K_2_C2   AS RealParameter (2.5);
+  K_2_C3   AS RealParameter (0.92);
+  K_2_iC4  AS RealParameter (0.44);
+  K_2_nC4  AS RealParameter (0.335);
+  K_2_iC5  AS RealParameter (0.156);
+  K_2_nC5  AS RealParameter (0.125);
+  K_2_C6   AS RealParameter (0.048);
+  K_2_C7   AS RealParameter (0.018);
+  K_2_C8   AS RealParameter (0.0069);
+  K_2_C9   AS RealParameter (0.0028);
+  K_2_C10  AS RealParameter (0.0012);
+  K_2_C11  AS RealParameter (0.0001);
+
+  K_3_N2He AS RealParameter (180.);
+  K_3_CO2  AS RealParameter (29.1);
+  K_3_H2S  AS RealParameter (8.4);
+  K_3_C1   AS RealParameter (56.);
+  K_3_C2   AS RealParameter (11.2);
+  K_3_C3   AS RealParameter (3.3);
+  K_3_iC4  AS RealParameter (1.16);
+  K_3_nC4  AS RealParameter (1.01);
+  K_3_iC5  AS RealParameter (0.405);
+  K_3_nC5  AS RealParameter (0.32);
+  K_3_C6   AS RealParameter (0.105);
+  K_3_C7   AS RealParameter (0.035);
+  K_3_C8   AS RealParameter (0.0125);
+  K_3_C9   AS RealParameter (0.0044);
+  K_3_C10  AS RealParameter (0.00172);
+  K_3_C11  AS RealParameter (0.0001);
+
+  K_4_N2He AS RealParameter (630.);
+  K_4_CO2  AS RealParameter (89.);
+  K_4_H2S  AS RealParameter (29.5);
+  K_4_C1   AS RealParameter (204.);
+  K_4_C2   AS RealParameter (42.);
+  K_4_C3   AS RealParameter (10.5);
+  K_4_iC4  AS RealParameter (4.15);
+  K_4_nC4  AS RealParameter (2.98);
+  K_4_iC5  AS RealParameter (1.12);
+  K_4_nC5  AS RealParameter (0.88);
+  K_4_C6   AS RealParameter (0.275);
+  K_4_C7   AS RealParameter (0.09);
+  K_4_C8   AS RealParameter (0.0285);
+  K_4_C9   AS RealParameter (0.0095);
+  K_4_C10  AS RealParameter (0.0035);
+  K_4_C11  AS RealParameter (0.0001);
+  
+
+
+  f_N2He, f_CO2, f_H2S, f_C1, f_C2, f_C3, f_iC4, f_nC4, f_iC5, f_nC5, f_C6, f_C7, f_C8, f_C9, f_C10, f_C11 AS caudal_molar;
+  p_1_N2He, p_1_CO2, p_1_H2S, p_1_C1, p_1_C2, p_1_C3, p_1_iC4, p_1_nC4, p_1_iC5, p_1_nC5, p_1_C6, p_1_C7, p_1_C8, p_1_C9, p_1_C10, p_1_C11 AS caudal_molar;
+  p_2_N2He, p_2_CO2, p_2_H2S, p_2_C1, p_2_C2, p_2_C3, p_2_iC4, p_2_nC4, p_2_iC5, p_2_nC5, p_2_C6, p_2_C7, p_2_C8, p_2_C9, p_2_C10, p_2_C11 AS caudal_molar;
+  F, P_1, P_2 AS caudal_molar;
+  L_1, L_2, L_3, L_4 AS caudal_molar;
+  V_1, V_2, V_3, V_4 AS caudal_molar;
+
+  x_1_N2He,x_1_CO2,x_1_H2S,x_1_C1,x_1_C2,x_1_C3,x_1_iC4,x_1_nC4,x_1_iC5,x_1_nC5,x_1_C6,x_1_C7,x_1_C8,x_1_C9,x_1_C10,x_1_C11 AS fraccion;
+  y_1_N2He,y_1_CO2,y_1_H2S,y_1_C1,y_1_C2,y_1_C3,y_1_iC4,y_1_nC4,y_1_iC5,y_1_nC5,y_1_C6,y_1_C7,y_1_C8,y_1_C9,y_1_C10,y_1_C11 AS fraccion;
+
+  z_F_N2He, z_F_CO2, z_F_H2S, z_F_C1, z_F_C2, z_F_C3, z_F_iC4, z_F_nC4, z_F_iC5, z_F_nC5, z_F_C6, z_F_C7, z_F_C8, z_F_C9, z_F_C10, z_F_C11 AS fraccion;
+  
+  x_2_N2He,x_2_CO2,x_2_H2S,x_2_C1,x_2_C2,x_2_C3,x_2_iC4,x_2_nC4 AS fraccion (VALUE: 0.3); 
+  x_2_iC5,x_2_nC5,x_2_C6,x_2_C7,x_2_C8,x_2_C9,x_2_C10,x_2_C11 AS fraccion;
+  y_2_N2He,y_2_CO2,y_2_H2S,y_2_C1,y_2_C2,y_2_C3,y_2_iC4,y_2_nC4 AS fraccion (VALUE: 0.5);
+  y_2_iC5,y_2_nC5,y_2_C6,y_2_C7,y_2_C8,y_2_C9,y_2_C10,y_2_C11 AS fraccion;
+
+  x_3_N2He,x_3_CO2,x_3_H2S,x_3_C1,x_3_C2,x_3_C3,x_3_iC4,x_3_nC4,x_3_iC5,x_3_nC5,x_3_C6,x_3_C7,x_3_C8,x_3_C9,x_3_C10,x_3_C11 AS fraccion;
+  y_3_N2He,y_3_CO2,y_3_H2S,y_3_C1,y_3_C2,y_3_C3,y_3_iC4,y_3_nC4,y_3_iC5,y_3_nC5,y_3_C6,y_3_C7,y_3_C8,y_3_C9,y_3_C10,y_3_C11 AS fraccion;
+
+  x_4_N2He,x_4_CO2,x_4_H2S,x_4_C1,x_4_C2,x_4_C3,x_4_iC4,x_4_nC4,x_4_iC5,x_4_nC5,x_4_C6,x_4_C7,x_4_C8,x_4_C9,x_4_C10,x_4_C11 AS fraccion;
+  y_4_N2He,y_4_CO2,y_4_H2S,y_4_C1,y_4_C2,y_4_C3,y_4_iC4,y_4_nC4,y_4_iC5,y_4_nC5,y_4_C6,y_4_C7,y_4_C8,y_4_C9,y_4_C10,y_4_C11 AS fraccion;
+
+
+ // Ecuaciones  
+
+ // Etapa 1
+
+  
+
+
+
+ // Etapa 2 
+
+  F = f_N2He + f_CO2 + f_H2S + f_C1 + f_C2 + f_C3 + f_iC4 + f_nC4+ f_iC5 + f_nC5 + f_C6 + f_C7 + f_C8 + f_C9 + f_C10 + f_C11;
+  
+  z_F_N2He = f_N2He/F;
+  z_F_CO2  = f_CO2/F;
+  z_F_H2S  = f_H2S/F;
+  z_F_C1   = f_C1/F;
+  z_F_C2   = f_C2/F;
+  z_F_C3   = f_C3/F;
+  z_F_iC4  = f_iC4/F;
+  z_F_nC4  = f_nC4/F;
+  z_F_iC5  = f_iC5/F;
+  z_F_nC5  = f_nC5/F;
+  z_F_C6   = f_C6/F;
+  z_F_C7   = f_C7/F;
+  z_F_C8   = f_C8/F;
+  z_F_C9   = f_C9/F; 
+  z_F_C10  = f_C10/F;
+  z_F_C11  = f_C11/F;
+
+  
+  F  = L_2 + V_2;
+
+  F*z_F_N2He   = L_2 * x_2_N2He + V_2 * y_2_N2He;
+  F*z_F_CO2     = L_2 * x_2_CO2 + V_2 * y_2_CO2;
+  F*z_F_H2S     = L_2 * x_2_H2S + V_2 * y_2_H2S;
+  F*z_F_C1        = L_2 * x_2_C1 + V_2 * y_2_C1;
+  F*z_F_C2         = L_2 * x_2_C2 + V_2 * y_2_C2;
+  F*z_F_C3        = L_2 * x_2_C3 + V_2 * y_2_C3;
+  F*z_F_iC4       = L_2 * x_2_iC4 + V_2 * y_2_iC4;
+  F*z_F_nC4     = L_2 * x_2_nC4 + V_2 * y_2_nC4;
+  F*z_F_iC5      = L_2 * x_2_iC5 + V_2 * y_2_iC5;
+  F*z_F_nC5     = L_2 * x_2_nC5 + V_2 * y_2_nC5;
+  F*z_F_C6        = L_2 * x_2_C6 + V_2 * y_2_C6;
+  F*z_F_C7       = L_2 * x_2_C7 + V_2 * y_2_C7;
+  F*z_F_C8         = L_2 * x_2_C8 + V_2 * y_2_C8;
+  F*z_F_C9       = L_2 * x_2_C9 + V_2 * y_2_C9;
+  F*z_F_C10    = L_2 * x_2_C10 + V_2 * y_2_C10;
+  F*z_F_C11     = L_2 * x_2_C11 + V_2 * y_2_C11;
+
+
+  y_2_N2He = K_2_N2He * x_2_N2He;
+  y_2_CO2 = K_2_CO2 * x_2_CO2;
+  y_2_H2S = K_2_H2S * x_2_H2S;
+  y_2_C1 = K_2_C1 * x_2_C1;
+  y_2_C2 = K_2_C2 * x_2_C2;
+  y_2_C3 = K_2_C3 * x_2_C3;
+  y_2_iC4 = K_2_iC4 * x_2_iC4;
+  y_2_nC4 = K_2_nC4 * x_2_nC4;
+  y_2_iC5 = K_2_iC5 * x_2_iC5;
+  y_2_nC5 = K_2_nC5 * x_2_nC5;
+  y_2_C6 = K_2_C6 * x_2_C6;
+  y_2_C7 = K_2_C7 * x_2_C7;
+  y_2_C8 = K_2_C8 * x_2_C8;
+  y_2_C9 = K_2_C9 * x_2_C9;
+  y_2_C10 = K_2_C10 * x_2_C10;
+  y_2_C11 = K_2_C11 * x_2_C11;
+
+  x_2_N2He + x_2_CO2 + x_2_H2S + x_2_C1 + x_2_C2 + x_2_C3 + x_2_iC4 + x_2_nC4+ x_2_iC5 + x_2_nC5 + x_2_C6 + x_2_C7 + x_2_C8 + x_2_C9 + x_2_C10 + x_2_C11 =
+  y_2_N2He + y_2_CO2 + y_2_H2S + y_2_C1 + y_2_C2 + y_2_C3 + y_2_iC4 + y_2_nC4+ y_2_iC5 + y_2_nC5 + y_2_C6 + y_2_C7 + y_2_C8 + y_2_C9 + y_2_C10 + y_2_C11;
+
+// Etapa 3
+
+
+  
+ // Etapa 4
+
+
+// Datos
+
+  f_N2He : 358.2, fixed;
+  f_CO2  : 4965.6, fixed;
+  f_H2S  : 339.4, fixed;
+  f_C1   : 2995.5, fixed;
+  f_C2   : 2395.5, fixed;
+  f_C3   : 2291, fixed;
+  f_iC4  : 604.1, fixed;
+  f_nC4  : 1539.9, fixed;
+  f_iC5  : 790.4, fixed;
+  f_nC5  : 1129.9, fixed;
+  f_C6   : 1764.7, fixed;
+  f_C7   : 2606.7, fixed;
+  f_C8   : 1844.5, fixed;
+  f_C9   : 1669, fixed;
+  f_C10  : 831.7, fixed;
+  f_C11  : 1214.5, fixed; 
+
+End
