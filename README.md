@@ -1,0 +1,1 @@
+# Analisis-y-Solucion-de-Sistemas-de-Ecuaciones-Algebraicas-No-Lineales-en-Ingenier-a-Qu-mica
