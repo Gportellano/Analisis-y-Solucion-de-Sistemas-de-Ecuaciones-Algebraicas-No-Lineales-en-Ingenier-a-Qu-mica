@@ -1,4 +1,4 @@
-# Analisis-y-Solucion-de-Sistemas-de-Ecuaciones-Algebraicas-No-Lineales-en-Ingenier-a-Quimica
+# Analisis-y-Solucion-de-Sistemas-de-Ecuaciones-Algebraicas-No-Lineales-en-Ingenieria-Quimica
 
 Los sistemas de ecuaciones algebraicas no lineales son una problem´atica t´ıpica dentro del contexto
 de la ingenier´ıa qu´ımica. La no convergencia de algunos programas solucionadores de dichos
